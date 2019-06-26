@@ -1,3 +1,7 @@
+""""
+    Utilizar com caminho da imagem para retornar as caracteristicas extraídas
+"""
+
 from __future__ import print_function
 import cv2 as cv
 import argparse
@@ -50,32 +54,8 @@ def rodaViolaJ(caminhoImagem):
     print("teste")
     # print(original_image.shape)
 
-    # teste exibir imagem
-    # cv.imshow('image',original_image)
-    # cv.waitKey(0)
-    # cv.destroyAllWindows()
-
     # Convert color image to grayscale for Viola-Jones
     grayscale_image = cv.cvtColor(original_image, cv.COLOR_BGR2GRAY)
-
-    # Load the classifier and create a cascade object for face detection
-    # *verificar se tem como melhorar o endereço
-    # face_cascade = cv.CascadeClassifier('C:\\Users\\pc\PycharmProjects\\EP2_IA_CLASSIFICATION\\venv\\Lib\\site-packages\\cv2\\data\\haarcascade_frontalface_alt.xml')
-
-    # detected_faces = face_cascade.detectMultiScale(grayscale_image)
-
-    # nume = 1
-    # for (column, row, width, height) in detected_faces:
-    #     # print("faces " + str(nume) )
-    #     cv.rectangle(
-    #         original_image,
-    #         (column, row),
-    #         (column + width, row + height),
-    #         (0, 255, 0),
-    #         2
-    #     )
-    #     # nume = nume + 1
-    # # ================================
 
     parser = argparse.ArgumentParser(description='Code for Cascade Classifier tutorial.')
     parser.add_argument('--face_cascade', help='Path to face cascade.', default=cv.data.haarcascades + 'haarcascade_frontalface_alt.xml')
@@ -88,11 +68,6 @@ def rodaViolaJ(caminhoImagem):
 
     face_cascade = cv.CascadeClassifier()
     eyes_cascade = cv.CascadeClassifier()
-
-    # fd, hog_image = hog(original_image, orientations=8, pixels_per_cell=(16, 16),
-    #                     cells_per_block=(1, 1), visualize=True, multichannel=True)
-    #
-    # fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 4), sharex=True, sharey=True)
 
 
     #-- 1. Load the cascades
@@ -111,22 +86,9 @@ def rodaViolaJ(caminhoImagem):
     cv.waitKey(0)
     cv.destroyAllWindows()
 
-# # exibe imagem
-#     ax1.axis('off')
-#     ax1.imshow(original_image, cmap=plt.cm.gray)
-#     ax1.set_title('Input image')
-#
-#     # Rescale histogram for better display
-#     hog_image_rescaled = exposure.rescale_intensity(hog_image, in_range=(0, 10))
-#
-#     ax2.axis('off')
-#     ax2.imshow(hog_image_rescaled, cmap=plt.cm.gray)
-#     ax2.set_title('Histogram of Oriented Gradients')
-#     plt.show()
-
-    # ================================
-
 def rodaHOG(original_image):
+    # https://www.learnopencv.com/histogram-of-oriented-gradients/
+    # https://www.learnopencv.com/handwritten-digits-classification-an-opencv-c-python-tutorial/
 
     winSize = (20, 20)
     blockSize = (10, 10)
